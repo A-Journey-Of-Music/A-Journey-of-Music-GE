@@ -122,7 +122,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ekur"]
-size = Vector2(56, 61)
+size = Vector2(40, 61)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_niqch")
@@ -132,7 +132,7 @@ sprite_frames = SubResource("SpriteFrames_duj6v")
 animation = &"running"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, -1)
+position = Vector2(4, -1)
 shape = SubResource("RectangleShape2D_0ekur")
 
 [node name="Camera2D" type="Camera2D" parent="."]
