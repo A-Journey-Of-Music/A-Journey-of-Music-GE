@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://cimvp4kqril06"]
+
+[ext_resource type="Script" path="res://menus/failure.gd" id="1_8f2oa"]
+[ext_resource type="FontFile" uid="uid://cvbmko4y5f23g" path="res://assets/fonts/Pixeled English Font 2/Pixeled English Font.otf" id="1_h25pc"]
+[ext_resource type="StyleBox" uid="uid://bba4t3op852ib" path="res://themes/dracula_normal_button.tres" id="2_8geq4"]
+[ext_resource type="StyleBox" uid="uid://c6ytebj43clh2" path="res://themes/dracula_hover_button.tres" id="3_iyfws"]
+
+[node name="Failure" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8f2oa")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.156863, 0.164706, 0.211765, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Pause_Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.313726, 0.980392, 0.482353, 1)
+theme_override_fonts/font = ExtResource("1_h25pc")
+theme_override_font_sizes/font_size = 50
+text = "Failure"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../BackToMenuButton")
+theme_override_colors/font_color = Color(0.313726, 0.980392, 0.482353, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.576471, 0.976471, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.576471, 0.976471, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.47451, 0.776471, 1)
+theme_override_fonts/font = ExtResource("1_h25pc")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("2_8geq4")
+theme_override_styles/hover = ExtResource("3_iyfws")
+text = "Retry"
+
+[node name="BackToMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../RetryButton")
+theme_override_colors/font_color = Color(0.313726, 0.980392, 0.482353, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.576471, 0.976471, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.576471, 0.976471, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.47451, 0.776471, 1)
+theme_override_fonts/font = ExtResource("1_h25pc")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("2_8geq4")
+theme_override_styles/hover = ExtResource("3_iyfws")
+text = "Back to Menu
+"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

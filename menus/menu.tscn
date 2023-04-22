@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0ytuf62ulet7"]
+[gd_scene load_steps=6 format=3 uid="uid://d0ytuf62ulet7"]
 
 [ext_resource type="Script" path="res://menus/menu.gd" id="1_xovfs"]
 [ext_resource type="FontFile" uid="uid://cvbmko4y5f23g" path="res://assets/fonts/Pixeled English Font 2/Pixeled English Font.otf" id="2_f1tp5"]
 [ext_resource type="StyleBox" uid="uid://bba4t3op852ib" path="res://themes/dracula_normal_button.tres" id="3_mpufr"]
 [ext_resource type="StyleBox" uid="uid://c6ytebj43clh2" path="res://themes/dracula_hover_button.tres" id="4_2vh0o"]
+[ext_resource type="PackedScene" uid="uid://b2i3uvorl231k" path="res://menus/menu_transition.tscn" id="5_mh8eb"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -38,6 +39,7 @@ grow_vertical = 2
 theme_override_constants/separation = 30
 
 [node name="StartGameButton" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
 theme_override_colors/font_color = Color(0.313726, 0.980392, 0.482353, 1)
@@ -53,6 +55,7 @@ theme_override_styles/focus = ExtResource("4_2vh0o")
 text = "Start Game"
 
 [node name="SettingsButton" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.313726, 0.980392, 0.482353, 1)
 theme_override_colors/font_hover_color = Color(0.741176, 0.576471, 0.976471, 1)
@@ -64,9 +67,11 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = ExtResource("3_mpufr")
 theme_override_styles/hover = ExtResource("4_2vh0o")
 theme_override_styles/focus = ExtResource("4_2vh0o")
+disabled = true
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../StartGameButton")
 theme_override_colors/font_color = Color(0.313726, 0.980392, 0.482353, 1)
@@ -80,6 +85,8 @@ theme_override_styles/normal = ExtResource("3_mpufr")
 theme_override_styles/hover = ExtResource("4_2vh0o")
 theme_override_styles/focus = ExtResource("4_2vh0o")
 text = "Quit Game"
+
+[node name="menu_transition" parent="." instance=ExtResource("5_mh8eb")]
 
 [connection signal="pressed" from="VBox/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="VBox/SettingsButton" to="." method="_on_settings_button_pressed"]

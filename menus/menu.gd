@@ -2,9 +2,11 @@ extends Control
 
 func _ready():
 	$VBox/StartGameButton.grab_focus()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_start_game_button_pressed():
-	get_tree().change_scene_to_file("res://levels/level01.tscn")
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	MenuTransition.change_scene("res://levels/level01.tscn")
 
 
 func _on_settings_button_pressed():

@@ -1,22 +1,25 @@
 extends Control
 
-var is_paused := false : 
-	set(value):
-		is_paused = set_is_paused(value)
-	get: 
-		return is_paused
-
 func _unhandled_input(event):
 	if event.is_action_pressed("pause"):
-		self.is_paused = !is_paused
+		pause()
 
-func set_is_paused(value):
-	is_paused = value
-	get_tree().paused = is_paused
-	visible = is_paused
-	
+func pause():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	var new_pause_state = not get_tree().paused
+	get_tree().paused = new_pause_state
+	self.visible = new_pause_state
+	$CenterContainer/VBoxContainer/ResumeButton.grab_focus()
+
+func unpause():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	var new_pause_state = false
+	get_tree().paused = new_pause_state
+	self.visible = false
+
 func _on_back_to_menu_button_pressed():
-	get_tree().change_scene_to_file("res://menus/menu.tscn")
+	unpause()
+	MenuTransition.change_scene("res://menus/menu.tscn")
 
 
 func _on_settings_button_pressed():
@@ -24,4 +27,4 @@ func _on_settings_button_pressed():
 
 
 func _on_resume_button_pressed():
-	self.is_paused = false
+	unpause()

@@ -6,7 +6,7 @@ const JUMP_SPEED := 550
 
 func _process(delta:float) -> void:
 	change_animation()
-	
+
 func change_animation():
 	# face left of right
 	if velocity.x > 0:

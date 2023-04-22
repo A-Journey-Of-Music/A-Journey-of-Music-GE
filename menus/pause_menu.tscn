@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://drp30rg76urt8"]
+[gd_scene load_steps=5 format=3 uid="uid://drp30rg76urt8"]
 
 [ext_resource type="Script" path="res://menus/pause_menu.gd" id="1_6auia"]
 [ext_resource type="FontFile" uid="uid://cvbmko4y5f23g" path="res://assets/fonts/Pixeled English Font 2/Pixeled English Font.otf" id="2_mu4or"]
+[ext_resource type="StyleBox" uid="uid://bba4t3op852ib" path="res://themes/dracula_normal_button.tres" id="3_auc26"]
+[ext_resource type="StyleBox" uid="uid://c6ytebj43clh2" path="res://themes/dracula_hover_button.tres" id="4_qu3b8"]
 
 [node name="Pause_Menu" type="Control"]
-process_mode = 2
+process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.290196, 0.788235, 1)
+color = Color(0.156863, 0.164706, 0.211765, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -36,29 +39,51 @@ theme_override_constants/separation = 10
 
 [node name="Pause_Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.313726, 0.980392, 0.482353, 1)
 theme_override_fonts/font = ExtResource("2_mu4or")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 50
 text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../BackToMenuButton")
+theme_override_colors/font_color = Color(0.313726, 0.980392, 0.482353, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.576471, 0.976471, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.576471, 0.976471, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.47451, 0.776471, 1)
 theme_override_fonts/font = ExtResource("2_mu4or")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("3_auc26")
+theme_override_styles/hover = ExtResource("4_qu3b8")
 text = "Resume"
 
 [node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.313726, 0.980392, 0.482353, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.576471, 0.976471, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.576471, 0.976471, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.47451, 0.776471, 1)
 theme_override_fonts/font = ExtResource("2_mu4or")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("3_auc26")
+theme_override_styles/hover = ExtResource("4_qu3b8")
+disabled = true
 text = "Settings
 "
 
 [node name="BackToMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../ResumeButton")
+theme_override_colors/font_color = Color(0.313726, 0.980392, 0.482353, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.576471, 0.976471, 1)
+theme_override_colors/font_focus_color = Color(0.741176, 0.576471, 0.976471, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.47451, 0.776471, 1)
 theme_override_fonts/font = ExtResource("2_mu4or")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("3_auc26")
+theme_override_styles/hover = ExtResource("4_qu3b8")
 text = "Back to Menu
 "
 
