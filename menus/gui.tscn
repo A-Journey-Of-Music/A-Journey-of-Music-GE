@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs68x7b1lsgnt"]
+
+[ext_resource type="PackedScene" uid="uid://drp30rg76urt8" path="res://menus/pause_menu.tscn" id="1_g07iw"]
+[ext_resource type="PackedScene" uid="uid://dib1su05cwfwc" path="res://menus/hud.tscn" id="2_kxjd3"]
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="Pause_Menu" parent="." instance=ExtResource("1_g07iw")]
+visible = false
+
+[node name="HUD" parent="." instance=ExtResource("2_kxjd3")]

@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0ytuf62ulet7"]
+
+[ext_resource type="Script" path="res://menus/menu.gd" id="1_xovfs"]
+[ext_resource type="FontFile" uid="uid://cvbmko4y5f23g" path="res://assets/fonts/Pixeled English Font 2/Pixeled English Font.otf" id="2_f1tp5"]
+[ext_resource type="StyleBox" uid="uid://bba4t3op852ib" path="res://themes/dracula_normal_button.tres" id="3_mpufr"]
+[ext_resource type="StyleBox" uid="uid://c6ytebj43clh2" path="res://themes/dracula_hover_button.tres" id="4_2vh0o"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xovfs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.156863, 0.164706, 0.211765, 1)
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -240.0
+offset_right = 384.0
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="StartGameButton" type="Button" parent="VBox"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+theme_override_colors/font_color = Color(0.313726, 0.980392, 0.482353, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.576471, 0.976471, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.47451, 0.776471, 1)
+theme_override_fonts/font = ExtResource("2_f1tp5")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("3_mpufr")
+theme_override_styles/hover = ExtResource("4_2vh0o")
+text = "Start Game"
+
+[node name="SettingsButton" type="Button" parent="VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.313726, 0.980392, 0.482353, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.576471, 0.976471, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.47451, 0.776471, 1)
+theme_override_fonts/font = ExtResource("2_f1tp5")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("3_mpufr")
+theme_override_styles/hover = ExtResource("4_2vh0o")
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="VBox"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../StartGameButton")
+theme_override_colors/font_color = Color(0.313726, 0.980392, 0.482353, 1)
+theme_override_colors/font_hover_color = Color(0.741176, 0.576471, 0.976471, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.47451, 0.776471, 1)
+theme_override_fonts/font = ExtResource("2_f1tp5")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("3_mpufr")
+theme_override_styles/hover = ExtResource("4_2vh0o")
+text = "Quit Game"
+
+[connection signal="pressed" from="VBox/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="VBox/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBox/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,0 +1,144 @@
+[gd_scene load_steps=21 format=3 uid="uid://dcqq8lquhj6fr"]
+
+[ext_resource type="Texture2D" uid="uid://boi0w6htpn8xe" path="res://assets/images/sprites/kiss/kiss_idle.png" id="1_cdne5"]
+[ext_resource type="Script" path="res://player/Player.gd" id="1_niqch"]
+[ext_resource type="Texture2D" uid="uid://crxpyxq306mrj" path="res://assets/images/sprites/kiss/kiss_run.png" id="2_3g6r6"]
+[ext_resource type="Texture2D" uid="uid://be0s3rp2s5lx5" path="res://assets/images/sprites/kiss/kiss_jump.png" id="2_jmhyx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_baglq"]
+atlas = ExtResource("1_cdne5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k46ps"]
+atlas = ExtResource("1_cdne5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq0jl"]
+atlas = ExtResource("1_cdne5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ichrc"]
+atlas = ExtResource("1_cdne5")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4bjp"]
+atlas = ExtResource("2_jmhyx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sor8"]
+atlas = ExtResource("2_jmhyx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bla6s"]
+atlas = ExtResource("2_jmhyx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mcn6"]
+atlas = ExtResource("2_jmhyx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5x0y"]
+atlas = ExtResource("2_3g6r6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iks1p"]
+atlas = ExtResource("2_3g6r6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4505"]
+atlas = ExtResource("2_3g6r6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4kmy"]
+atlas = ExtResource("2_3g6r6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v55y4"]
+atlas = ExtResource("2_3g6r6")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrply"]
+atlas = ExtResource("2_3g6r6")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_duj6v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_baglq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k46ps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq0jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ichrc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4bjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sor8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bla6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mcn6")
+}],
+"loop": true,
+"name": &"jumping",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5x0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iks1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4505")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4kmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v55y4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrply")
+}],
+"loop": true,
+"name": &"running",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ekur"]
+size = Vector2(56, 61)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_niqch")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_duj6v")
+animation = &"running"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -1)
+shape = SubResource("RectangleShape2D_0ekur")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 1080
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_drag_margin = true
