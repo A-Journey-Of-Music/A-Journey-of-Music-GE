@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://dcqq8lquhj6fr"]
+[gd_scene load_steps=22 format=3 uid="uid://dcqq8lquhj6fr"]
 
 [ext_resource type="Texture2D" uid="uid://boi0w6htpn8xe" path="res://assets/images/sprites/kiss/kiss_idle.png" id="1_cdne5"]
 [ext_resource type="Script" path="res://player/Player.gd" id="1_niqch"]
 [ext_resource type="Texture2D" uid="uid://crxpyxq306mrj" path="res://assets/images/sprites/kiss/kiss_run.png" id="2_3g6r6"]
 [ext_resource type="Texture2D" uid="uid://be0s3rp2s5lx5" path="res://assets/images/sprites/kiss/kiss_jump.png" id="2_jmhyx"]
+[ext_resource type="AudioStream" uid="uid://cfu36vm0rg8id" path="res://assets/audio/sounds/Voicy_Jump sound.mp3" id="5_nf33h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_baglq"]
 atlas = ExtResource("1_cdne5")
@@ -142,3 +143,6 @@ position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
+
+[node name="player_jump_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nf33h")

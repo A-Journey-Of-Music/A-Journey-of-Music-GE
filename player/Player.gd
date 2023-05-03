@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
+@onready var player_jump_sound = $player_jump_sound
+
 const SPEED := 200
 const GRAVITY := 2000
 const JUMP_SPEED := 550
 
-func _process(delta:float) -> void:
+func _process(_delta:float) -> void:
 	change_animation()
 
 func change_animation():
@@ -16,6 +18,7 @@ func change_animation():
 	
 	# changing of the animations itself
 	if velocity.y < 0: # negative Y is up
+		player_jump_sound.play(0.15)
 		$AnimatedSprite2D.play("jumping")
 	else:
 		if velocity.x != 0:

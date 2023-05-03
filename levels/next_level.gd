@@ -1,4 +1,8 @@
 extends Area2D
 
+@onready var next_level_sound = $next_level_sound
+
 func _on_body_entered(body: CharacterBody2D):
-	MenuTransition.change_scene("res://.godot/exported/133200997/export-6d0445dc016a29b1fec539550c3a68ff-menu.scn")
+	next_level_sound.play()
+	await next_level_sound.finished
+	get_tree().change_scene_to_file("res://menus/success.tscn")

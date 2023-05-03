@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dib1su05cwfwc"]
+[gd_scene load_steps=3 format=3 uid="uid://dib1su05cwfwc"]
 
 [ext_resource type="FontFile" uid="uid://cvbmko4y5f23g" path="res://assets/fonts/Pixeled English Font 2/Pixeled English Font.otf" id="1_mr880"]
+[ext_resource type="Script" path="res://menus/HUD_Score_Label.gd" id="2_cnv77"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -34,5 +35,6 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_mr880")
 theme_override_font_sizes/font_size = 30
-text = "Score
+text = "Score: 0/0
 "
+script = ExtResource("2_cnv77")

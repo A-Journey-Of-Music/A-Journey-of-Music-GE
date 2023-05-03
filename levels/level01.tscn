@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://du73523n0b56"]
+[gd_scene load_steps=23 format=3 uid="uid://du73523n0b56"]
 
 [ext_resource type="PackedScene" uid="uid://cs68x7b1lsgnt" path="res://menus/gui.tscn" id="1_33fe2"]
 [ext_resource type="Texture2D" uid="uid://rj12vp6g25go" path="res://assets/images/tilesets/blockworld/Blockworld_Tileset.png" id="1_bcibd"]
 [ext_resource type="Texture2D" uid="uid://8xn3r3v501oy" path="res://assets/images/backgrounds/kiss/Kiss_Sky.png" id="1_e84qx"]
 [ext_resource type="Script" path="res://levels/CloudsLayer.gd" id="1_gnqn1"]
+[ext_resource type="Script" path="res://levels/level01.gd" id="1_jbe7p"]
 [ext_resource type="PackedScene" uid="uid://dcqq8lquhj6fr" path="res://player/player.tscn" id="2_a3605"]
 [ext_resource type="Texture2D" uid="uid://dehdxu6rux3p5" path="res://assets/images/backgrounds/kiss/Kiss_Clouds.png" id="2_bqo6l"]
 [ext_resource type="PackedScene" uid="uid://drp30rg76urt8" path="res://menus/pause_menu.tscn" id="2_hb00r"]
@@ -14,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://b3d4tss6evnwd" path="res://assets/images/backgrounds/kiss/Kiss_Floor.png" id="6_ird8u"]
 [ext_resource type="Script" path="res://levels/death_reset.gd" id="14_xq3u4"]
 [ext_resource type="Script" path="res://levels/next_level.gd" id="14_ygwfw"]
+[ext_resource type="PackedScene" uid="uid://b5y8ai5pr5lcf" path="res://collectibles/coin.tscn" id="15_jvm1r"]
+[ext_resource type="AudioStream" uid="uid://brvlnbs7fe53c" path="res://assets/audio/sounds/Voicy_Borat_ Great Success!.mp3" id="15_lcdsl"]
+[ext_resource type="AudioStream" uid="uid://b76isvwlflupm" path="res://assets/audio/sounds/Voicy_Game Over (Super Mario).mp3" id="16_txcen"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dl1gx"]
 texture = ExtResource("1_bcibd")
@@ -95,6 +99,7 @@ size = Vector2(144, 152)
 size = Vector2(96, 336)
 
 [node name="level01" type="Node2D"]
+script = ExtResource("1_jbe7p")
 
 [node name="GUI" parent="." instance=ExtResource("1_33fe2")]
 process_mode = 3
@@ -110,7 +115,7 @@ motion_mirroring = Vector2(1920, 0)
 script = ExtResource("1_gnqn1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Kiss_Background/Clouds"]
-position = Vector2(960, 536)
+position = Vector2(960, 540)
 texture = ExtResource("1_e84qx")
 
 [node name="Clouds_Front" type="ParallaxLayer" parent="Kiss_Background"]
@@ -119,7 +124,7 @@ motion_mirroring = Vector2(1920, 0)
 script = ExtResource("3_k621k")
 
 [node name="Sprite2D" type="Sprite2D" parent="Kiss_Background/Clouds_Front"]
-position = Vector2(960, 536)
+position = Vector2(960, 540)
 texture = ExtResource("2_bqo6l")
 
 [node name="Buildings_BackBack" type="ParallaxLayer" parent="Kiss_Background"]
@@ -127,7 +132,7 @@ motion_scale = Vector2(0.3, 1)
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Kiss_Background/Buildings_BackBack"]
-position = Vector2(960, 536)
+position = Vector2(960, 540)
 texture = ExtResource("3_ac8wv")
 
 [node name="Buildings_Back" type="ParallaxLayer" parent="Kiss_Background"]
@@ -135,14 +140,14 @@ motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Kiss_Background/Buildings_Back"]
-position = Vector2(960, 536)
+position = Vector2(960, 540)
 texture = ExtResource("4_n16uc")
 
 [node name="Buildings" type="ParallaxLayer" parent="Kiss_Background"]
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Kiss_Background/Buildings"]
-position = Vector2(960, 536)
+position = Vector2(960, 540)
 texture = ExtResource("5_npofc")
 
 [node name="Street" type="ParallaxLayer" parent="Kiss_Background"]
@@ -150,7 +155,7 @@ motion_scale = Vector2(0.9, 1)
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Kiss_Background/Street"]
-position = Vector2(960, 536)
+position = Vector2(960, 540)
 texture = ExtResource("6_ird8u")
 
 [node name="level01tm" type="TileMap" parent="."]
@@ -172,12 +177,35 @@ script = ExtResource("14_ygwfw")
 position = Vector2(8, -52)
 shape = SubResource("RectangleShape2D_b180g")
 
+[node name="next_level_sound" type="AudioStreamPlayer" parent="next_level"]
+stream = ExtResource("15_lcdsl")
+
 [node name="death_reset" type="Area2D" parent="."]
 script = ExtResource("14_xq3u4")
 
 [node name="death_reset_collision" type="CollisionShape2D" parent="death_reset"]
 position = Vector2(2592, 1208)
 shape = SubResource("RectangleShape2D_x2oom")
+
+[node name="death_reset_sound" type="AudioStreamPlayer" parent="death_reset"]
+stream = ExtResource("16_txcen")
+
+[node name="coin" parent="." groups=["Collectibles"] instance=ExtResource("15_jvm1r")]
+
+[node name="coin2" parent="." groups=["Collectibles"] instance=ExtResource("15_jvm1r")]
+position = Vector2(2136, 688)
+
+[node name="coin3" parent="." groups=["Collectibles"] instance=ExtResource("15_jvm1r")]
+position = Vector2(3168, 784)
+
+[node name="coin4" parent="." groups=["Collectibles"] instance=ExtResource("15_jvm1r")]
+position = Vector2(3976, 880)
+
+[node name="coin5" parent="." groups=["Collectibles"] instance=ExtResource("15_jvm1r")]
+position = Vector2(4032, 880)
+
+[node name="coin6" parent="." groups=["Collectibles"] instance=ExtResource("15_jvm1r")]
+position = Vector2(4096, 880)
 
 [connection signal="body_entered" from="next_level" to="next_level" method="_on_body_entered"]
 [connection signal="body_entered" from="death_reset" to="death_reset" method="_on_body_entered"]

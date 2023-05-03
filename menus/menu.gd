@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	# Other Ready Settings
 	$VBox/StartGameButton.grab_focus()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
