@@ -35,6 +35,7 @@ boot_splash/minimum_display_time=1000
 
 MenuTransition="*res://menus/menu_transition.tscn"
 Globals="*res://scripts/Globals.gd"
+UUID="*res://libs/uuid.gd"
 
 [display]
 

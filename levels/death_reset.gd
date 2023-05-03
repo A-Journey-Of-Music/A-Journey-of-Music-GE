@@ -9,5 +9,6 @@ func _on_body_entered(body: CharacterBody2D):
 	get_tree().change_scene_to_file("res://menus/failure.tscn")
 
 func reset_scores():
+	Globals.increment_deaths()
 	Globals.reset_score()
 	Globals.reset_max_score()
