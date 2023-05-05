@@ -47,6 +47,10 @@ window/size/mode=3
 
 project/assembly_name="A-journey-of-music (godot 4)"
 
+[editor]
+
+movie_writer/movie_file="/home/janneumann/Downloads/demo.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray()

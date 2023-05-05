@@ -4,6 +4,7 @@ func _ready():
 	# Other Ready Settings
 	$VBox/StartGameButton.grab_focus()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Globals.init_GA()
 
 func _on_start_game_button_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
